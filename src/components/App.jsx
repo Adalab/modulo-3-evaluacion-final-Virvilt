@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../styles/App.scss";
-import charactersJson from "../data/characters.json";
-import translates from "../services/Translates";
 import CharacterList from "./characters/CharacterList";
+import api from "../services/api";
 
 function App() {
-	const [characters, setCharacters] = useState(charactersJson);
+	const [characters, setCharacters] = useState([]);
+
+	useEffect(() => {
+		api.getAllCharacters().then((response) => {
+			setCharacters(response);
+		});
+	}, []);
 
 	return (
 		<>

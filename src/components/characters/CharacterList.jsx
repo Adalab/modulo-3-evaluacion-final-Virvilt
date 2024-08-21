@@ -1,4 +1,4 @@
-import CharacterItem from "./CharacterItem";
+import CharacterItem from "../characters/CharacterItem";
 import PropTypes from "prop-types";
 
 function CharacterList({ characters }) {

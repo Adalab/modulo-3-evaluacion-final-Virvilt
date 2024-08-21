@@ -24,16 +24,16 @@ const species = (species) => {
 	}
 };
 
-const objectToExport = {
-	gender: gender,
-	species: species,
-};
-
 gender.propTypes = {
 	gender: PropTypes.string.isRequired,
 };
 species.propTypes = {
 	species: PropTypes.string.isRequired,
+};
+
+const objectToExport = {
+	gender: gender,
+	species: species,
 };
 
 export default objectToExport;

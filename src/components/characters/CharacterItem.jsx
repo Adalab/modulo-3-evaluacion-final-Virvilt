@@ -1,5 +1,4 @@
-import Translates from "../../services/Translates";
-import CharacterList from "./CharacterList";
+import translates from "../../services/translates";
 import PropTypes from "prop-types";
 
 function CharacterItem({ character }) {
@@ -15,7 +14,7 @@ function CharacterItem({ character }) {
 				<div>
 					<h2 className="card__title">{character.name}</h2>
 					<p className="card__species">
-						{Translates.species(character.species)}
+						{translates.species(character.species)}
 					</p>
 				</div>
 			</div>
