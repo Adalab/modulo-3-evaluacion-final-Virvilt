@@ -2,15 +2,40 @@ import { useEffect, useState } from "react";
 import "../styles/App.scss";
 import CharacterList from "./characters/CharacterList";
 import api from "../services/api";
+import FilterName from "./filters/FilterName";
+import FilterHouse from "./filters/FilterHouse";
 
 function App() {
 	const [characters, setCharacters] = useState([]);
+	const [nameFilter, setNameFilter] = useState("");
+	const [houseFilter, setHouseFilter] = useState("gryffindor");
 
 	useEffect(() => {
 		api.getAllCharacters().then((response) => {
 			setCharacters(response);
 		});
 	}, []);
+
+	const filteredCharacters = characters.filter((character) => {
+		if (
+			character.name.toLowerCase().includes(nameFilter) &&
+			(houseFilter === "all" ||
+				character.house.toLowerCase() === houseFilter)
+		) {
+			return true;
+		}
+		return false;
+	});
+
+	// lifting
+	const updateNameFilter = (value) => {
+		setNameFilter(value);
+	};
+
+	// lifting
+	const updateHouseFilter = (value) => {
+		setHouseFilter(value);
+	};
 
 	return (
 		<>
@@ -20,23 +45,8 @@ function App() {
 
 			<main className="main">
 				<form>
-					<div className="form__section">
-						<label>Buscar personaje</label>
-						<div>
-							<input type="text" />
-						</div>
-					</div>
-					<div className="form__section">
-						<label>Seleccina la casa</label>
-						<div>
-							<select>
-								<option>Gryffindor</option>
-								<option>Hufflepuff</option>
-								<option>Ravenclaw</option>
-								<option>Slytherin</option>
-							</select>
-						</div>
-					</div>
+					<FilterName updateNameFilter={updateNameFilter} />
+					<FilterHouse updateHouseFilter={updateHouseFilter} />
 				</form>
 			</main>
 
@@ -44,7 +54,7 @@ function App() {
 				<h2 className="characters__title title--medium">
 					Lista de personajes
 				</h2>
-				<CharacterList characters={characters} />
+				<CharacterList characters={filteredCharacters} />
 			</section>
 
 			<footer>
