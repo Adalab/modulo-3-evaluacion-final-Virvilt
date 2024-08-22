@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import "../styles/App.scss";
+import { Route, Routes } from "react-router-dom";
 import CharacterList from "./characters/CharacterList";
 import api from "../services/api";
-import FilterName from "./filters/FilterName";
-import FilterHouse from "./filters/FilterHouse";
+import "../styles/App.scss";
+import CharacterDetail from "./characters/CharacterDetail";
 
 function App() {
 	const [characters, setCharacters] = useState([]);
@@ -44,18 +44,26 @@ function App() {
 			</header>
 
 			<main className="main">
-				<form>
-					<FilterName updateNameFilter={updateNameFilter} />
-					<FilterHouse updateHouseFilter={updateHouseFilter} />
-				</form>
-			</main>
+				<Routes>
+					{/* Ruta estatica (character list)*/}
+					<Route
+						path="/"
+						element={
+							<CharacterList
+								characters={filteredCharacters}
+								updateNameFilter={updateNameFilter}
+								updateHouseFilter={updateHouseFilter}
+							/>
+						}
+					/>
 
-			<section className="characters">
-				<h2 className="characters__title title--medium">
-					Lista de personajes
-				</h2>
-				<CharacterList characters={filteredCharacters} />
-			</section>
+					{/* Ruta dinamica (character detail)*/}
+					<Route
+						path="/character/:characterId"
+						element={<CharacterDetail characters={characters} />}
+					/>
+				</Routes>
+			</main>
 
 			<footer>
 				<small>&copy;2024 Adalabers</small>

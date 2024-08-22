@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 
 const gender = (gender) => {
-	if (species === "male") {
+	if (gender === "male") {
 		return "Masculino";
-	} else if (species === "female") {
+	} else if (gender === "female") {
 		return "Femenino";
 	} else {
 		return gender;

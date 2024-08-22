@@ -1,5 +1,11 @@
 @import "./core/reset";
 @import "./core/variables";
+@import "./core/components/characterDetail.scss";
+
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f0f0f0;
+}
 
 .main {
 	display: grid;

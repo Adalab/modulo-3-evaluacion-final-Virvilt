@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const getAllCharacters = () => {
 	// Llamamos a la API
 	return fetch("https://hp-api.onrender.com/api/characters")
@@ -7,13 +9,17 @@ const getAllCharacters = () => {
 		});
 };
 
-const getCharacter = () => {
+const getCharacter = (characterId) => {
 	// Llamamos a la API
-	return fetch("https://hp-api.onrender.com/api/characters")
+	return fetch(`https://hp-api.onrender.com/api/character/${characterId}`)
 		.then((response) => response.json())
 		.then((response) => {
 			return response;
 		});
+};
+
+getCharacter.propTypes = {
+	characterId: PropTypes.number.isRequired,
 };
 
 const objectToExport = {
