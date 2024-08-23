@@ -9,9 +9,24 @@ function CharacterDetail({ characters }) {
 	const { pathname } = useLocation();
 	const routeData = matchPath("character/:characterId", pathname);
 	const characterId = routeData !== null ? routeData.params.characterId : "";
-	let character = characters.find(
-		(character) => character.id === characterId
-	);
+	let character = null;
+	if (characters !== undefined && characters) {
+		character = characters.find(
+			(character) => character.id === characterId
+		);
+	}
+	if (!character) {
+		return (
+			<>
+				<p>
+					<Link to={`/`} className="back-link">
+						&larr; volver
+					</Link>
+				</p>
+				<p className="not-found">El personaje buscado no existe.</p>
+			</>
+		);
+	}
 
 	if (character.alive !== undefined && character.alive) {
 		character.status = "Vivo";
@@ -22,7 +37,7 @@ function CharacterDetail({ characters }) {
 	return (
 		<section className="character_detail">
 			<Link to={`/`} className="back-link">
-				<i class="fa-sharp fa-solid fa-arrow-left"></i> volver
+				&larr; volver
 			</Link>
 			<div className="card_perfile">
 				<div className="picture">
@@ -35,16 +50,15 @@ function CharacterDetail({ characters }) {
 						title={`Foto de ${character.name}`}
 					/>
 				</div>
-				<div class="info">
+				<div className="info">
 					<h2>{character.name}</h2>
 					<p>
-						<strong>Estatus:</strong> {character.status}{" "}
-						<span class="heart">💖</span>
+						<strong>Estatus:</strong> {character.status}
 					</p>
 					<p>
 						<strong>Especie:</strong>{" "}
 						{translates.species(character.species)}{" "}
-						<span class="icon">👤</span>
+						<span className="icon">👤</span>
 					</p>
 					<p>
 						<strong>Genero:</strong>{" "}
@@ -52,6 +66,11 @@ function CharacterDetail({ characters }) {
 					</p>
 					<p>
 						<strong>Casa:</strong> {character.house}
+					</p>
+					<p className="house_logo">
+						<img
+							src={characterUtils.getHouseLogo(character.house)}
+						/>
 					</p>
 				</div>
 			</div>

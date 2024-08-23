@@ -18,9 +18,11 @@
 			height: 100%;
 			border-style: none;
 			img {
-				max-width: 100%;
+				width: 500px;
 				height: auto;
 				color: white;
+				border-radius: 0.5cm;
+				margin: 3px;
 			}
 		}
 
@@ -53,6 +55,11 @@
 			.heart,
 			.icon {
 				font-size: 1.2em;
+				width: 5px;
+			}
+			.house_logo {
+				max-width: 300px;
+				align-items: start;
 			}
 		}
 	}

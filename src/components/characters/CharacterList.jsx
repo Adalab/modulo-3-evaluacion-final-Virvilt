@@ -17,7 +17,10 @@ function CharacterList({
 					houseFilter={houseFilter}
 					updateHouseFilter={updateHouseFilter}
 				/>
-				<p>No hay personajes para mostrar.</p>
+				<p className="not-found">
+					No hay ningún personaje que coincida con la palabra '
+					{nameFilter}'.
+				</p>
 			</>
 		);
 	}
