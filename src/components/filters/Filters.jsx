@@ -2,20 +2,33 @@ import PropTypes from "prop-types";
 import FilterName from "./FilterName";
 import FilterHouse from "./FilterHouse";
 
-function Filters({ updateNameFilter, updateHouseFilter }) {
+function Filters({
+	nameFilter,
+	updateNameFilter,
+	houseFilter,
+	updateHouseFilter,
+}) {
 	return (
 		<>
-			<form>
-				<FilterName updateNameFilter={updateNameFilter} />
-				<FilterHouse updateHouseFilter={updateHouseFilter} />
+			<form className="form__filters">
+				<FilterName
+					nameFilter={nameFilter}
+					updateNameFilter={updateNameFilter}
+				/>
+				<FilterHouse
+					houseFilter={houseFilter}
+					updateHouseFilter={updateHouseFilter}
+				/>
 			</form>
 		</>
 	);
 }
 
 Filters.propTypes = {
-	updateNameFilter: PropTypes.string.isRequired,
-	updateHouseFilter: PropTypes.string.isRequired,
+	nameFilter: PropTypes.string.isRequired,
+	updateNameFilter: PropTypes.func.isRequired,
+	houseFilter: PropTypes.string.isRequired,
+	updateHouseFilter: PropTypes.func.isRequired,
 };
 
 export default Filters;

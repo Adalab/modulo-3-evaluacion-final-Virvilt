@@ -1,21 +1,26 @@
-import translates from "../../services/translates";
+import translates from "../../utils/translates";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import characterUtils from "../../utils/characterUtils";
 
 function CharacterItem({ character }) {
 	return (
-		<li className="card">
+		<li className="character_item">
 			<Link to={`/character/${character.id}`}>
 				<div className="details">
-					<img
-						src={character.image}
-						alt={`Foto de ${character.name}`}
-						title={`Foto de ${character.name}`}
-						className="card__img"
-					/>
-					<div>
-						<h2 className="card__title">{character.name}</h2>
-						<p className="card__species">
+					<div className="picture">
+						<img
+							src={characterUtils.getBackgroundCharacter(
+								character.image,
+								character.house
+							)}
+							alt={`Foto de ${character.name}`}
+							title={`Foto de ${character.name}`}
+						/>
+					</div>
+					<div className="info">
+						<h2 className="title">{character.name}</h2>
+						<p className="species">
 							{translates.species(character.species)}
 						</p>
 					</div>
@@ -26,7 +31,7 @@ function CharacterItem({ character }) {
 }
 
 CharacterItem.propTypes = {
-	character: PropTypes.array.isRequired,
+	character: PropTypes.object.isRequired,
 };
 
 export default CharacterItem;

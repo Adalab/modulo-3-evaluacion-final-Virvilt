@@ -1,0 +1,71 @@
+.character_item {
+	margin-inline-end: 5px;
+	max-width: 60vh;
+	border-radius: 15px;
+	margin-top: 20px;
+	padding: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgb(240, 240, 240);
+	box-shadow: 1px 1px 3px 1px rgba(98, 98, 98, 0.3);
+
+	.picture {
+		width: 20vh;
+		display: flex;
+		align-items: center;
+		min-height: 10vh;
+		margin: 0;
+		flex-direction: column;
+		padding: 10px;
+		img {
+			max-width: 20vh;
+			align-content: center;
+		}
+	}
+
+	.info {
+		padding: 15px;
+		text-decoration: none;
+	}
+
+	.title {
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: 600;
+		font-style: normal;
+		color: rgb(68, 68, 68);
+		font-size: 17px;
+		margin-bottom: 5px;
+		text-align: center;
+		text-decoration: none;
+	}
+
+	.species {
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: 400;
+		font-style: italic;
+		color: rgb(68, 68, 68);
+		text-decoration: none;
+		font-size: 14px;
+		text-align: center;
+	}
+
+	.heart,
+	.icon {
+		font-size: 1.2em;
+	}
+
+	.back-link {
+		text-decoration: none;
+		color: white;
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		font-size: 0.9em;
+		background-color: transparent;
+	}
+
+	.back-link:hover {
+		text-decoration: underline;
+	}
+}

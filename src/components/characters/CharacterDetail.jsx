@@ -1,8 +1,9 @@
 import { useState } from "react";
-import translates from "../../services/translates";
+import translates from "../../utils/translates";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { useLocation, matchPath } from "react-router";
+import characterUtils from "../../utils/characterUtils";
 
 function CharacterDetail({ characters }) {
 	const { pathname } = useLocation();
@@ -11,6 +12,7 @@ function CharacterDetail({ characters }) {
 	let character = characters.find(
 		(character) => character.id === characterId
 	);
+
 	if (character.alive !== undefined && character.alive) {
 		character.status = "Vivo";
 	} else {
@@ -19,14 +21,21 @@ function CharacterDetail({ characters }) {
 
 	return (
 		<section className="character_detail">
-			<div className="card">
-				<img
-					src={character.image}
-					alt={`Foto de ${character.name}`}
-					title={`Foto de ${character.name}`}
-					className="character-image"
-				/>
-				<div class="character-info">
+			<Link to={`/`} className="back-link">
+				<i class="fa-sharp fa-solid fa-arrow-left"></i> volver
+			</Link>
+			<div className="card_perfile">
+				<div className="picture">
+					<img
+						src={characterUtils.getBackgroundCharacter(
+							character.image,
+							character.house
+						)}
+						alt={`Foto de ${character.name}`}
+						title={`Foto de ${character.name}`}
+					/>
+				</div>
+				<div class="info">
 					<h2>{character.name}</h2>
 					<p>
 						<strong>Estatus:</strong> {character.status}{" "}
@@ -45,9 +54,6 @@ function CharacterDetail({ characters }) {
 						<strong>Casa:</strong> {character.house}
 					</p>
 				</div>
-				<Link to={`/`} className="back-link">
-					volver
-				</Link>
 			</div>
 		</section>
 	);

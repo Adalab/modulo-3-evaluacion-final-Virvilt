@@ -1,33 +1,35 @@
 @import "./core/reset";
 @import "./core/variables";
-@import "./core/components/characterDetail.scss";
+@import "./core/components/characters/characterDetail.scss";
+@import "./core/components/characters/characteItem.scss";
+@import "./core/components/characters/characterList.scss";
+@import "./core/components/filters/filters.scss";
 
 body {
+	width: 100%;
 	font-family: Arial, sans-serif;
-	background-color: #f0f0f0;
-}
+	background-color: rgb(24, 19, 46);
+	display: flex;
+	align-items: center;
+	min-height: 100vh;
+	margin: 0;
+	flex-direction: column;
+	padding: 50px;
 
-.main {
-	display: grid;
-	row-gap: 3rem;
-
-	@media (min-width: 600px) {
-		grid-template-column: 2fr 3fr;
-		column-gap: 3rem;
-	}
-}
-
-.form {
-	&__section {
-		width: 300px;
-		margin-inline: auto;
-		margin-bottom: 1rem;
-		display: grid;
-		grid-template-columns: 5em 1fr;
-
-		@media (min-width: 600px) {
-			width: 100%;
-			grid-template-columns: 9em 1fr;
+	header {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		.logo {
+			max-width: 300px;
 		}
+	}
+
+	.main {
+		width: 100vw;
+		max-width: 1600px;
+		box-sizing: border-box;
+		padding: 0 25px;
 	}
 }
